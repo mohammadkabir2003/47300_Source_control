@@ -1,0 +1,105 @@
+/* Reset & layout */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Theme */
+:root {
+  --ink: #0f172a;          /* slate-900 */
+  --card: #ffffff;
+  --accent-1: #6366f1;     /* indigo-500 */
+  --accent-2: #0ea5e9;     /* sky-500 */
+  --bg-1: #eef2ff;         /* indigo-50 */
+  --bg-2: #f0f9ff;         /* sky-50 */
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 500px at 10% -10%, var(--bg-1), transparent 60%),
+    radial-gradient(1000px 450px at 110% 110%, var(--bg-2), transparent 55%),
+    #f8fafc;
+  overflow-x: hidden; /* keep the blob shadows from causing scrollbars */
+  position: relative;
+}
+
+/* Floating color blob behind content */
+body::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto auto;
+  width: 70vmin;
+  height: 70vmin;
+  background:
+    radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent-1) 80%, white), transparent 60%),
+    radial-gradient(circle at 70% 70%, color-mix(in oklab, var(--accent-2) 80%, white), transparent 55%);
+  filter: blur(70px) saturate(120%);
+  opacity: 0.45;
+  z-index: 0;
+  border-radius: 50%;
+  animation: floaty 18s ease-in-out infinite alternate;
+}
+
+/* Subtle grid overlay for texture */
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(transparent 95%, rgba(15, 23, 42, 0.04) 95%) 0 0/100% 24px,
+    linear-gradient(90deg, transparent 95%, rgba(15, 23, 42, 0.04) 95%) 0 0/24px 100%;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: multiply;
+}
+
+/* Center the content and add side padding */
+.center {
+  position: relative;
+  z-index: 1; /* above background effects */
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;         /* vertical centering */
+  align-items: center;             /* horizontal centering */
+  text-align: center;
+  padding-inline: clamp(1rem, 6vw, 4rem);
+}
+
+/* Title */
+h1 {
+  margin: 0 0 0.75rem 0;
+  font-size: clamp(1.9rem, 2.5vw + 1rem, 2.6rem);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Paragraph card */
+.center p {
+  max-width: 70ch;
+  margin: 0;
+  background: var(--card);
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08), 0 2px 6px rgba(2, 6, 23, 0.05);
+  backdrop-filter: saturate(120%);
+}
+
+/* Blob animation */
+@keyframes floaty {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-6vmin, 2vmin) scale(1.05); }
+  100% { transform: translate(-12vmin, -2vmin) scale(0.98); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
