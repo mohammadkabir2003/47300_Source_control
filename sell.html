@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sell an Item — CCNY Exchange</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">CCNY Exchange</a>
+      <nav aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="market.html">Browse</a>
+        <a class="nav-link active" aria-current="page" href="sell.html">Sell an Item</a>
+        <a class="nav-link" href="safety.html">Safety</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <header class="page-header">
+      <h1>Sell an Item</h1>
+      <p class="muted">No backend yet — this is a front-end demo form.</p>
+    </header>
+
+    <form class="form" action="#" method="post" onsubmit="alert('Demo only — no backend connected.'); return false;">
+      <div class="field">
+        <label for="title">Title<span class="req">*</span></label>
+        <input class="input" id="title" name="title" type="text" required placeholder="e.g., Calculus I (Stewart) 8th Ed." />
+      </div>
+
+      <div class="field two-col">
+        <div>
+          <label for="category">Category<span class="req">*</span></label>
+          <select class="input" id="category" name="category" required>
+            <option value="">Select…</option>
+            <option>Textbooks</option>
+            <option>Electronics</option>
+            <option>Dorm Essentials</option>
+            <option>Clothing</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="price">Price ($)<span class="req">*</span></label>
+          <input class="input" id="price" name="price" type="number" inputmode="decimal" min="0" step="0.01" required placeholder="35" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="location">Meet-up Location<span class="req">*</span></label>
+        <input class="input" id="location" name="location" type="text" required placeholder="e.g., NAC Lobby, Student Center, Towers Lobby" />
+      </div>
+
+      <div class="field">
+        <label for="desc">Description<span class="req">*</span></label>
+        <textarea class="input" id="desc" name="desc" rows="5" required placeholder="Condition, what’s included, preferred times to meet…"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="email">CCNY Email<span class="req">*</span></label>
+        <input class="input" id="email" name="email" type="email" required
+               placeholder="name@ccny.cuny.edu"
+               pattern=".+@ccny\.cuny\.edu$"
+               title="Use your CCNY email (name@ccny.cuny.edu)" />
+        <p class="help">Student-only marketplace. We use CCNY emails to verify membership.</p>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" type="submit">Preview Listing</button>
+        <a class="btn btn-ghost" href="market.html">Cancel</a>
+      </div>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>By posting, you agree to our <a href="safety.html">Safety & Policies</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
